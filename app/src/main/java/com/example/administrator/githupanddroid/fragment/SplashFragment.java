@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import com.example.administrator.githupanddroid.MainActivity;
 import com.example.administrator.githupanddroid.R;
 import com.example.administrator.githupanddroid.adpater.SplashViewPager;
+import com.example.administrator.githupanddroid.loadview.Pager1;
+import com.example.administrator.githupanddroid.loadview.Pager2;
+import com.example.administrator.githupanddroid.loadview.Pager3;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -102,6 +105,14 @@ public class SplashFragment extends Fragment {
 //                Intent intent=new Intent(getActivity(), MainActivity.class);
 //                getActivity().startActivity(intent);
 //                getActivity().finish();
+            if (position==0){
+                Pager1 view = (Pager1) adapter.getView(position);
+                view.showAnimotion();
+            }else if (position==2){
+                Pager3 view = (Pager3) adapter.getView(position);
+                view.showAnimotion();
+            }
+
 
         }
 
@@ -123,8 +134,9 @@ public class SplashFragment extends Fragment {
 //                ivPhoneFont.setScaleY();
                 ivPhoneFont.setAlpha(positionOffset);
                 float scale=0.3f+positionOffset*0.7f;
+                float scaley=0.3f+positionOffset*0.7f;
                 layoutPhone.setScaleY(scale);
-                layoutPhone.setScaleY(scale);
+                layoutPhone.setScaleY(scaley);
 
                 //手机平移
                 layoutPhone.setTranslationX((positionOffset-1)*200);

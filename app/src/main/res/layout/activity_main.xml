@@ -8,7 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    >
     <!--主内容-->
     <include
         layout="@layout/layout_content_main"

@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/ivBubble1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:src="@drawable/bubble1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_120"/>
@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/ivBubble2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:src="@drawable/bubble2"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ivBubble1"
@@ -23,7 +23,7 @@
     <ImageView
         android:id="@+id/ivBubble3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:src="@drawable/bubble3"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ivBubble2"
