@@ -45,4 +45,6 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
 </resources>

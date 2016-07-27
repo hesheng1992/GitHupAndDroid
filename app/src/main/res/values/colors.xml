@@ -13,4 +13,15 @@
 
     <color name="colorDim">#bebebe</color>
     <color name="colorRefresh">#808183</color>
+    <color name="toolbar">#bf40ff</color>
+    <color name="text">#FF40B3FF</color>
+    <color name="white">#E7D7EFA7</color>
+    <color name="grenn">#FF40FF86</color>
+    <color name="red">#FFFF4043</color>
+    <color name="chengse">#FFFFAC40</color>
+    <color name="yellow">#FFFFF940</color>
+    <color name="qingse">#FFD2FF40</color>
+    <color name="qianlvse">#FF40FF43</color>
+    <color name="zise">#FFFF40F5</color>
+    <color name="back">#FF252325</color>
 </resources>

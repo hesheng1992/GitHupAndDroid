@@ -114,6 +114,7 @@ public class SplashFragment extends Fragment {
             }
 
 
+
         }
 
         @Override
