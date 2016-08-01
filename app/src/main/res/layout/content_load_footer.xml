@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:indeterminate="true"
         android:gravity="center"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:background="@color/qingse"/>
 
     <TextView
         android:id="@+id/tv_complete"

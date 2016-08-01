@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.example.administrator.githupanddroid.MainActivity;
 import com.example.administrator.githupanddroid.R;
 import com.example.administrator.githupanddroid.fragment.SplashFragment;
+import com.example.administrator.githupanddroid.login.view.LoginActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -51,6 +52,9 @@ public class SplashActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
+                Intent intent1=new Intent(this, LoginActivity.class);
+                startActivity(intent1);
+                finish();
                 break;
             case R.id.btnEnter:
                 Intent intent=new Intent(this, MainActivity.class);

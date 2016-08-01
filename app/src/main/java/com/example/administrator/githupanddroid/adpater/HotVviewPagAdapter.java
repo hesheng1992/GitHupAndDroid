@@ -1,8 +1,12 @@
 package com.example.administrator.githupanddroid.adpater;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.Lugague;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.viewfragment.LangugeFragment;
 
 import java.util.List;
 
@@ -11,20 +15,17 @@ import java.util.List;
  */
 
 public class HotVviewPagAdapter extends FragmentPagerAdapter {
-    private List<Fragment> list;
+    private List<Lugague> list;
 
-    public HotVviewPagAdapter(FragmentManager fm,List<Fragment> list) {
+    public HotVviewPagAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.list=list;
+        //得到本地的json数据用gson解析返回的实体集合
+        list=Lugague.getInstanse(context);
     }
-    private String []str={
-      "java","javaScipt","HTML","GO","Sfit"
-    };
-
 
     @Override
     public Fragment getItem(int position) {
-        return list.get(position);
+        return LangugeFragment.getInstance(list.get(position));
     }
 
     @Override
@@ -34,6 +35,6 @@ public class HotVviewPagAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return str[position];
+        return list.get(position).getName();
     }
 }
