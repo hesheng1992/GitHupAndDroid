@@ -1,5 +1,9 @@
 package com.example.administrator.githupanddroid.httputils;
 
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.Users;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersInfo;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUp;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUpToal;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.RepoResult;
 import com.example.administrator.githupanddroid.login.model.AccessTokenResult;
 import com.example.administrator.githupanddroid.login.model.User;
@@ -11,6 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -46,5 +51,18 @@ public interface GitHupApi {
             @Query("q")String query,
             @Query("page")int pageId);
 
+    //搜索热门开发者
+    @GET("/search/users")
+    Call<UsersUpToal> searchCoder(
+            @Query("q")String types ,
+            @Query("page")int page,
+            @Query("order") String type
+    );
+
+    String utl="https://api.github.com/search/users?q=followers:>0&page=1&order=desc";
+    @GET("users/{use}")
+    Call<UsersInfo> getUserinfom(
+            @Path("use") String loginname
+    );
 
 }

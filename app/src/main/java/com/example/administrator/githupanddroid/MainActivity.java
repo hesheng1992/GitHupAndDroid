@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.example.administrator.githupanddroid.hotvirepagerfragment.HotReponFragment;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.view.HotCoderFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.drawerLayout)
     DrawerLayout drawerLayout;
     private HotReponFragment fragment;
+    private HotCoderFragment hotCoderFragment;
 
 
 
@@ -62,10 +64,16 @@ public class MainActivity extends AppCompatActivity {
                     fragment=new HotReponFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
                     break;
+                case R.id.github_hot_coder:
+                    hotCoderFragment=new HotCoderFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,hotCoderFragment).commit();
+                    break;
             }
 
 
             return true;
         }
     };
+
+
 }

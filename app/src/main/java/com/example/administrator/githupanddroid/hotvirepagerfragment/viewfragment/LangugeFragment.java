@@ -88,11 +88,14 @@ public class LangugeFragment extends Fragment implements PublicInterFace{
     private void initdata() {
         testP=new TestP(this,getLanguge());
         footerView=new FooterView(getContext());
+
 //        listView.addFooterView(footerView);
         list=new ArrayList<>();
 
         adapter=new HotListAdapter(list,getContext());
+//        listView.addFooterView(footerView);
         listView.setAdapter(adapter);
+//        testP.refresh();
         // 使用当前对象做为key，来记录上一次的刷新时间,如果两次下拉太近，将不会触发新刷新
         ptrFrameLayout.setLastUpdateTimeRelateObject(this);
         // 关闭header所用时长

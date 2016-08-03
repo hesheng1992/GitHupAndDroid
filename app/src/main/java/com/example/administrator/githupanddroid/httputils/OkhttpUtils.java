@@ -1,5 +1,9 @@
 package com.example.administrator.githupanddroid.httputils;
 
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.Users;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersInfo;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUp;
+import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUpToal;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.RepoResult;
 import com.example.administrator.githupanddroid.login.model.AccessTokenResult;
 import com.example.administrator.githupanddroid.login.model.User;
@@ -10,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -63,4 +68,18 @@ public class OkhttpUtils implements GitHupApi {
 
         return gitapi.searchRepos(query,pageId);
     }
+
+    @Override
+    public Call<UsersUpToal> searchCoder(@Query("q") String types, @Query("page") int page, @Query("order") String type) {
+
+
+        return gitapi.searchCoder(types,page,type);
+    }
+
+    @Override
+    public Call<UsersInfo> getUserinfom(@Path("use") String loginname) {
+        return gitapi.getUserinfom(loginname);
+    }
+
+
 }

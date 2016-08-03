@@ -38,22 +38,26 @@ public class TestP {
     public void refresh() {
 //        interFace.hintloadMore();
         interFace.showContentView();
-        repoResultCall = OkhttpUtils.getOkhttpUtils().searchRepos("lugague:" + lugague.getPath(), page);
+        repoResultCall = OkhttpUtils.getOkhttpUtils().searchRepos("language:" + lugague.getPath(), page);
         repoResultCall.enqueue(repoCallback);
     }
 
     public void begianloadMore(){
         interFace.loading();
-        repoResultCall=OkhttpUtils.getOkhttpUtils().searchRepos("lugague:" + lugague.getPath(), page);
+        repoResultCall=OkhttpUtils.getOkhttpUtils().searchRepos("language:" + lugague.getPath(), page);
         repoResultCall.enqueue(loadmorecall);
 
     }
+
+//    String url="https://api.github.com/search/repositories/p=";
 
     //下拉刷新联网获取最新数据
     private Callback<RepoResult> repoCallback=new Callback<RepoResult>() {
         @Override
         public void onResponse(Call<RepoResult> call, Response<RepoResult> response) {
+            Log.e("TAG","respones"+response.toString());
             interFace.stopRefresh();
+
             RepoResult body = response.body();
             Log.e("TAG","body"+body.toString());
             if (body==null){
@@ -86,7 +90,7 @@ public class TestP {
     private Callback<RepoResult> loadmorecall=new Callback<RepoResult>() {
         @Override
         public void onResponse(Call<RepoResult> call, Response<RepoResult> response) {
-            interFace.hintloadMore();
+
             RepoResult body = response.body();
             if (body==null){
                 interFace.showErrorView("结果为空");
@@ -94,6 +98,7 @@ public class TestP {
             List<ItemsBean> items = body.getItems();
             interFace.showData(items);
             page++;
+            interFace.hintloadMore();
 
         }
 

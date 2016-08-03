@@ -48,7 +48,7 @@ public class HotListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
        MyViewHolder holder;
         if (view==null){
-            view=LayoutInflater.from(context).inflate(R.layout.fragment_repo_list,null);
+            view=LayoutInflater.from(context).inflate(R.layout.layout_item_repo,null);
             holder=new MyViewHolder(view);
             view.setTag(holder);
         }
