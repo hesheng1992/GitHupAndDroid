@@ -1,14 +1,15 @@
 package com.example.administrator.githupanddroid.httputils;
 
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.Users;
+import com.example.administrator.githupanddroid.Repoinfo.model.RepoContentResult;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersInfo;
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUp;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUpToal;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.RepoResult;
 import com.example.administrator.githupanddroid.login.model.AccessTokenResult;
 import com.example.administrator.githupanddroid.login.model.User;
-
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -64,5 +65,30 @@ public interface GitHupApi {
     Call<UsersInfo> getUserinfom(
             @Path("use") String loginname
     );
+
+    /***
+     * 获取readme
+     * @param owner 仓库拥有者
+     * @param repo 仓库名称
+     * @return 仓库的readme页面内容,将是markdown格式且做了base64处理
+     */
+    @GET("/repos/{owner}/{repo}/readme")
+    Call<RepoContentResult> getReadme(
+            @Path("owner") String owner,
+            @Path("repo") String repo);
+
+    /***
+     * 获取一个markdonw内容对应的HTML页面
+     *
+     * @param body 请求体,内容来自getReadme后的RepoContentResult
+     */
+    @Headers({
+            "Content-Type:text/plain"
+    })
+    @GET("/markdown/raw")
+    Call<ResponseBody> markDown(
+            @Body RequestBody body
+    );
+
 
 }

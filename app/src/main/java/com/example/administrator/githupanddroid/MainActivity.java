@@ -8,9 +8,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.administrator.githupanddroid.favirate.view.FavirateFragment;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.HotReponFragment;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.view.HotCoderFragment;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private HotReponFragment fragment;
     private HotCoderFragment hotCoderFragment;
+    private FavirateFragment favirateFragment;
 
 
 
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                     hotCoderFragment=new HotCoderFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,hotCoderFragment).commit();
                     break;
+                case R.id.arsenal_my_repo:
+                    favirateFragment=new FavirateFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,favirateFragment).commit();
+                    break;
             }
 
 
@@ -76,4 +83,13 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
 }

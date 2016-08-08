@@ -1,10 +1,12 @@
 package com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.view;
 
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ public class HotCoderFragment extends Fragment implements CoderAPI{
     private List<UsersInfo> list;
     private FooterView footerView;
     private HotCoderPre pre;
+    private boolean isLoading=false;
 
     @Nullable
     @Override
@@ -80,26 +83,6 @@ public class HotCoderFragment extends Fragment implements CoderAPI{
         houseHeader.initWithString("HOT CODER ");
         houseHeader.setPadding(0,50,0,50);
 
-        //上拉加载
-        Mugen.with(recyclerView, new MugenCallbacks() {
-            @Override
-            public void onLoadMore() {
-
-
-            }
-
-            @Override
-            public boolean isLoading() {
-
-                return false;
-            }
-
-            @Override
-            public boolean hasLoadedAllItems() {
-                return false;
-            }
-        });
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -109,6 +92,15 @@ public class HotCoderFragment extends Fragment implements CoderAPI{
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int itemCount = layoutManager.getItemCount();
+                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+                if (!isLoading){
+                    Log.e("TAG","load");
+                    pre.loadMoreData();
+                    isLoading=true;
+                }
+
             }
         });
 
@@ -127,12 +119,14 @@ public class HotCoderFragment extends Fragment implements CoderAPI{
 
     @Override
     public void showFootview() {
-
+        adapter.notifyItemInserted(list.size()-1);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void removeFootview() {
-
+        list.remove(list.size()-1);
+        adapter.notifyDataSetChanged();
     }
 
 

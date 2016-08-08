@@ -1,18 +1,20 @@
 package com.example.administrator.githupanddroid.httputils;
 
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.Users;
+import com.example.administrator.githupanddroid.Repoinfo.model.RepoContentResult;
+
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersInfo;
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUp;
+
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotcoder.model.UsersUpToal;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.RepoResult;
 import com.example.administrator.githupanddroid.login.model.AccessTokenResult;
 import com.example.administrator.githupanddroid.login.model.User;
-
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -51,8 +53,6 @@ public class OkhttpUtils implements GitHupApi {
         return okhttpUtils;
     }
 
-
-
     @Override
     public Call<AccessTokenResult> getOAuthToken(@Field("client_id") String client, @Field("client_secret") String clientSecret, @Field("code") String code) {
         return gitapi.getOAuthToken(client,clientSecret,code);
@@ -79,6 +79,16 @@ public class OkhttpUtils implements GitHupApi {
     @Override
     public Call<UsersInfo> getUserinfom(@Path("use") String loginname) {
         return gitapi.getUserinfom(loginname);
+    }
+
+    @Override
+    public Call<RepoContentResult> getReadme(@Path("owner") String owner, @Path("repo") String repo) {
+        return gitapi.getReadme(owner,repo);
+    }
+
+    @Override
+    public Call<ResponseBody> markDown(@Body RequestBody body) {
+        return gitapi.markDown(body);
     }
 
 

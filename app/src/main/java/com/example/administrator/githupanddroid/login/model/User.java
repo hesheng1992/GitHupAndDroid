@@ -2,11 +2,13 @@ package com.example.administrator.githupanddroid.login.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016-07-30.
  */
 
-public class User {
+public class User implements Serializable{
     // 登录所用的账号
     private String login;
     // 用户名

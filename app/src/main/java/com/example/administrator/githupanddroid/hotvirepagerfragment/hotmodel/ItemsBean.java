@@ -1,7 +1,10 @@
 package com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel;
 
+import android.os.Bundle;
+import android.os.Parcelable;
+
 import com.example.administrator.githupanddroid.login.model.User;
-import com.google.gson.annotations.SerializedName;
+
 
 import java.io.Serializable;
 
@@ -16,7 +19,7 @@ public class ItemsBean implements Serializable{
     private User owner;
     private String description;
     private int stargazers_count;
-    private int forks_count;
+    private int forks_count;//仓库的fork数量
 
     public ItemsBean(int id, String name, String full_name, User owner, String description, int stargazers_count, int forks_count) {
         this.id = id;
@@ -26,6 +29,7 @@ public class ItemsBean implements Serializable{
         this.description = description;
         this.stargazers_count = stargazers_count;
         this.forks_count = forks_count;
+
     }
 
     public int getId() {

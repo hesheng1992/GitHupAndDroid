@@ -1,5 +1,6 @@
 package com.example.administrator.githupanddroid.hotvirepagerfragment.viewfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,16 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.githupanddroid.R;
 import com.example.administrator.githupanddroid.adpater.HotListAdapter;
+import com.example.administrator.githupanddroid.Repoinfo.view.RepoInfoActivity;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.ItemsBean;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotmodel.Lugague;
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotpresenter.AddLoadMore;
-import com.example.administrator.githupanddroid.hotvirepagerfragment.hotpresenter.HotInterface;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotpresenter.PublicInterFace;
 import com.example.administrator.githupanddroid.hotvirepagerfragment.hotpresenter.TestP;
 import com.mugen.Mugen;
@@ -135,6 +135,18 @@ public class LangugeFragment extends Fragment implements PublicInterFace{
         ptrFrameLayout.setBackgroundResource(R.color.colorRefresh);
         houseHeader.initWithString("I LIKE ");
         houseHeader.setPadding(0,50,0,50);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ItemsBean item = adapter.getItem(i);
+                Intent intent=new Intent(getContext(), RepoInfoActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("key_repo",item);
+                intent.putExtras(bundle);
+                getActivity().startActivity(intent);
+//                RepoInfoActivity.open(getContext(),item);
+            }
+        });
 
 
 
@@ -180,8 +192,6 @@ public class LangugeFragment extends Fragment implements PublicInterFace{
             adapter.notifyDataSetChanged();
             listView.setAdapter(adapter);
         }
-
-
     }
 
 
